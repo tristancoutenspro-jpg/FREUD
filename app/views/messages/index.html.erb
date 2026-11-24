@@ -1,0 +1,12 @@
+<h1><%= @chat.title %></h1>
+
+<div class="messages">
+  <% @messages.each do |message| %>
+    <div class="message">
+      <strong><%= message.role.capitalize %></strong>
+      <p><%= message.content %></p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Back to chats", chats_path %>
