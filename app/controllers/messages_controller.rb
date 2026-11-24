@@ -1,22 +1,29 @@
 class MessagesController < ApplicationController
-  def index
-    @messages = Message.all
-  end
+  before_action :set_chat
 
+  def index
+    @messages = @chat.messages.order(created_at: :asc)
+  end
 
   def create
-    @message= Message.new(message_params)
-
+    @chat = Chat.find(params[:chat_id])
+    @message = Message.new(message_params)
+    @message.chat = @chat
+    @message.role = "user"
     if @message.save
-    redirect_to message_path(@message)
+    redirect_to chat_path(@chat)
     else
-      render :new, status: :unprocessable_entity
-
+    render "chats/show", status: :unprocessable_entity
     end
-  end
+end
+
   private
 
-    def message_params
-      params.require(:message).permit(:content, :role)
-    end
+  def set_chat
+    @chat = current_user.chats.find(params[:chat_id])
+  end
+
+  def message_params
+    params.require(:message).permit(:content)
+  end
 end
