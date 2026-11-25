@@ -1,19 +1,38 @@
 class MessagesController < ApplicationController
-  before_action :set_chat
+
+ before_action :set_chat
+
+  SYSTEM_PROMPT = <<~PROMPT
+    You are Freud, a warm and empathetic therapist.
+
+    I am someone who wants to talk through what is on my mind and get support.
+
+    Listen carefully, give realistic and empathetic advice, and ask one gentle follow-up question.
+    If I mention harming myself, encourage me to contact a professional or emergency services.
+
+    Answer in short paragraphs, in plain text.
+  PROMPT
+
 
   def index
     @messages = @chat.messages
   end
 
+
   def create
-    @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params)
     @message.chat = @chat
     @message.role = "user"
+
     if @message.save
-    redirect_to chat_path(@chat)
+      ruby_llm_chat = RubyLLM.chat
+      ruby_llm_chat.with_instructions(SYSTEM_PROMPT)
+      response = ruby_llm_chat.ask(@message.content)
+      Message.create(role: "assistant", content: response.content, chat: @chat)
+      redirect_to chat_path(@chat)
     else
-    render "chats/show", status: :unprocessable_entity
+      @messages = @chat.messages.order(created_at: :asc)
+      render "chats/show", status: :unprocessable_entity
     end
 end
 
