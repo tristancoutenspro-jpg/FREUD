@@ -10,3 +10,72 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+:root {
+  --freud-cream: #FFEDD8;
+  --freud-apricot: #F3D5B5;
+  --freud-tan: #E7BC91;
+  --freud-bronze: #D4A276;
+  --freud-camel: #BC8A5F;
+  --freud-copper: #A47148;
+  --freud-walnut: #6F4518;
+  --freud-dark: #583101;
+}
+
+body {
+  background-color: var(--freud-cream);
+  color: var(--freud-dark);
+  font-family: "Inter", sans-serif;
+}
+
+.btn-freud {
+  background-color: var(--freud-walnut);
+  color: var(--freud-cream);
+  border: 1px solid var(--freud-walnut);
+  border-radius: 30px;
+  padding: 12px 24px;
+  transition: 0.2s ease;
+}
+
+.btn-freud:hover {
+  background-color: var(--freud-dark);
+  color: var(--freud-cream);
+}
+
+.freud-title {
+  color: var(--freud-dark);
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 180px;
+  padding-bottom: 250px;
+}
+
+
+
+.freud-tagline {
+  color: var(--freud-dark);
+  font-family: Georgia, serif;
+  font-size: 29px;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.freud-description {
+  color: var(--freud-copper);
+  font-size: 19px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.start-button {
+  display: inline-block;
+  padding: 17px 32px;
+  font-size: 16px;
+  text-decoration: none;
+}
