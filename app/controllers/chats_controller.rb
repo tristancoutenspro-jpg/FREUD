@@ -1,8 +1,4 @@
 class ChatsController < ApplicationController
-  def index
-    @chats = current_user.chats.order(created_at: :desc)
-  end
-
   def create
     @chat = Chat.new(chat_params)
     @chat.title = "New chat" if @chat.title.blank?
@@ -19,9 +15,19 @@ class ChatsController < ApplicationController
     @messages = @chat.messages.order(created_at: :asc)
   end
 
+  def index
+    @chats = current_user.chats.order(created_at: :desc)
+  end
+
+  def destroy
+    @chat = current_user.chats.find(params[:id])
+    @chat.destroy
+    redirect_to chats_path, notice: "Chat deleted", status: :see_other
+  end
+
   private
 
   def chat_params
     params.require(:chat).permit(:title)
-    end
+  end
 end
