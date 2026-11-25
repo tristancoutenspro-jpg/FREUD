@@ -1,8 +1,6 @@
-
 <div class="landing-page">
 
   <main class="landing-content text-center">
-
 
     <h1 class="freud-title">FREUD</h1>
 
@@ -16,10 +14,28 @@
       is the first step.
     </p>
 
-    <%= button_to "Start a new conversation →",
-        chats_path,
-        method: :post,
-        class: "btn-freud start-button" %>
+    <button type="button" class="btn-freud start-button" data-bs-toggle="modal" data-bs-target="#newChatModal">
+      Start a new conversation →
+    </button>
 
   </main>
+</div>
+
+<div class="modal fade" id="newChatModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Select a name for your new chat</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= simple_form_for Chat.new do |f| %>
+        <div class="modal-body">
+          <%= f.input :title, label: false, placeholder: "e.g. A rough week" %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Start chat", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
