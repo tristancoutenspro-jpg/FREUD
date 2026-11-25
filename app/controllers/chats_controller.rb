@@ -14,8 +14,16 @@ class ChatsController < ApplicationController
     @chat = current_user.chats.find(params[:id])
     @messages = @chat.messages.order(created_at: :asc)
   end
+
+  def index
+    @chats = current_user.chats.order(created_at: :desc)
   private
     def chat_params
     params.require(:chat).permit(:title)
   end
 end
+
+# list all of the chats in the view
+#
+# add a delete button to every chat
+# implement the delete method
