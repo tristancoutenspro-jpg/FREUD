@@ -1,8 +1,4 @@
 class ChatsController < ApplicationController
-  def index
-    @chats = current_user.chats.order(created_at: :desc)
-  end
-
   def create
     @chat = Chat.new(chat_params)
     @chat.title = "New chat" if @chat.title.blank?
@@ -24,13 +20,9 @@ class ChatsController < ApplicationController
   end
 
   def destroy
-    @chats = Chat.find(params[:id])
-    chat.destroy
-    flash[:notice] = "Chat deleted"
-    # respond_to do |format|
-    # format.html { redirect_to chats_path }
-    # format.turbo_stream { /* render destroy.turbo_stream */ }
-    # end
+    @chat = current_user.chats.find(params[:id])
+    @chat.destroy
+    redirect_to chats_path, notice: "Chat deleted", status: :see_other
   end
 
   private
