@@ -1,26 +1,25 @@
-<h1>Pages#home</h1>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newChatModal">
-  Start a new chat
-</button>
+<div class="landing-page">
 
-<div class="modal fade" id="newChatModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Select a name for your new chat</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <%= simple_form_for Chat.new do |f| %>
-        <div class="modal-body">
-          <%= f.input :title, label: false, placeholder: "e.g. A rough week" %>
-        </div>
-        <div class="modal-footer">
-          <%= f.submit "Start chat", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <main class="landing-content text-center">
+
+
+    <h1 class="freud-title">FREUD</h1>
+
+    <h2 class="freud-tagline">
+      A space to think.<br>
+      A place to talk.
+    </h2>
+
+    <p class="freud-description">
+      Sometimes, putting things into words<br>
+      is the first step.
+    </p>
+
+    <%= button_to "Start a new conversation →",
+        chats_path,
+        method: :post,
+        class: "btn-freud start-button" %>
+
+  </main>
 </div>
-
-<p>Find me in app/views/pages/home.html.erb</p>

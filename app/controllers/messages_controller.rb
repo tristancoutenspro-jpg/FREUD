@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
 
 
   def index
-    @messages = @chat.messages.order(created_at: :asc)
+    @messages = @chat.messages
   end
 
 
