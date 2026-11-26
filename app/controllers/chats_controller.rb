@@ -1,7 +1,7 @@
 class ChatsController < ApplicationController
   def index
     @chats = current_user.chats.order(created_at: :desc)
-    @chats = Chat.all
+
     return unless params[:query].present?
 
     @chats = @chats.where("title ILIKE ?", "%#{params[:query]}%")
