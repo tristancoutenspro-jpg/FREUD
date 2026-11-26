@@ -1,4 +1,12 @@
 class ChatsController < ApplicationController
+  def index
+    @chats = current_user.chats.order(created_at: :desc)
+    @chats = Chat.all
+    return unless params[:query].present?
+
+    @chats = @chats.where("title ILIKE ?", "%#{params[:query]}%")
+  end
+
   def create
     @chat = Chat.new(chat_params)
     @chat.title = "New chat" if @chat.title.blank?
@@ -13,10 +21,6 @@ class ChatsController < ApplicationController
   def show
     @chat = current_user.chats.find(params[:id])
     @messages = @chat.messages.order(created_at: :asc)
-  end
-
-  def index
-    @chats = current_user.chats.order(created_at: :desc)
   end
 
   def destroy
