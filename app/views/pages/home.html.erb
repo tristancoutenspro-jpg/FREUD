@@ -1,24 +1,29 @@
 <div class="landing-page">
 
-  <main class="landing-content text-center">
 
-    <h1 class="freud-title">FREUD</h1>
+<main class="landing-content text-center">
 
-    <h2 class="freud-tagline">
-      A space to think.<br>
-      A place to talk.
-    </h2>
+  <%= image_tag "freud-logo.png", class: "freud-logo", alt: "Freud logo" %>
 
-    <p class="freud-description">
-      Sometimes, putting things into words<br>
-      is the first step.
-    </p>
+  <h1 class="freud-title">FREUD</h1>
 
-    <button type="button" class="btn-freud start-button" data-bs-toggle="modal" data-bs-target="#newChatModal">
-      Start a new conversation →
-    </button>
+  <h2 class="freud-tagline">
+    A space to think.<br>
+    A place to talk.
+  </h2>
 
-  </main>
+  <p class="freud-description">
+    Sometimes, putting things into words<br>
+    is the first step.
+  </p>
+
+  <button type="button" class="btn-freud start-button"
+    data-bs-toggle="modal" data-bs-target="#newChatModal">
+    Start a new conversation →
+  </button>
+
+</main>
+
 </div>
 
 <div class="modal fade" id="newChatModal" tabindex="-1" aria-hidden="true">
