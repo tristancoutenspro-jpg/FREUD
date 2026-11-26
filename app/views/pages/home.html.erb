@@ -23,17 +23,18 @@
 
 <div class="modal fade" id="newChatModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Select a name for your new chat</h5>
+    <div class="modal-content freud-modal-content">
+      <div class="modal-header freud-modal-header">
+        <h5 class="modal-title freud-modal-title">Select a name for your new chat</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= simple_form_for Chat.new do |f| %>
-        <div class="modal-body">
+        <div class="modal-body freud-modal-body">
           <%= f.input :title, label: false, placeholder: "e.g. A rough week" %>
         </div>
+
         <div class="modal-footer">
-          <%= f.submit "Start chat", class: "btn btn-primary" %>
+          <%= f.submit "Start chat", class: "freud-bouton-modal" %>
         </div>
       <% end %>
     </div>

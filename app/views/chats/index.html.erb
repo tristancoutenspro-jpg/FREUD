@@ -17,14 +17,18 @@
 
 
   <% if @chats.empty? %>
-    <p>You have no chats yet. <%= link_to "Start a new chat", root_path %></p>
+    <p>You have no chats yet.</p>
+    <%= link_to "Start a new conversation →", root_path, class: "btn-freud start-button" %>
   <% else %>
     <ul>
       <% @chats.each do |chat| %>
-        <li><%= link_to chat.title, chat_path(chat) %></li>
+        <li>
+          <%= link_to chat.title, chat_path(chat) %>
+          <%= link_to "Delete", chat_path(chat),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this chat?" },
+                class: "delete-chat" %>
+        </li>
       <% end %>
     </ul>
   <% end %>
-
-  <%= link_to "Back to Home", root_path %>
 </div>

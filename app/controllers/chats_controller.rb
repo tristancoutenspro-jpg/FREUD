@@ -23,6 +23,12 @@ class ChatsController < ApplicationController
     @messages = @chat.messages.order(created_at: :asc)
   end
 
+  def destroy
+    @chat = current_user.chats.find(params[:id])
+    @chat.destroy
+    redirect_to chats_path, notice: "Chat deleted", status: :see_other
+  end
+
   private
 
   def chat_params

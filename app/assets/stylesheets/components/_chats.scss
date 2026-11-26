@@ -52,3 +52,26 @@
   box-shadow: none;
   padding-left: 0;
 }
+
+.chat-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.chat-page li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(88, 49, 1, 0.2);
+}
+
+.delete-chat {
+  color: #b3261e;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.delete-chat:hover {
+  text-decoration: underline;
+}
