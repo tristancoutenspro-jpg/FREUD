@@ -1,3 +1,4 @@
+
 .chat-page {
   max-width: 720px;
   margin: 0 auto;
@@ -7,6 +8,8 @@
 .chat-page h1 {
   text-align: center;
   margin-bottom: 32px;
+  font-family: Inter, serif;
+  color: var(--freud-dark);
 }
 
 .messages {
@@ -23,14 +26,15 @@
 .message-user {
   align-self: flex-end;
   max-width: 80%;
-  background: #e6e6e6;
+  background: var(--freud-apricot);
+  color: var(--freud-dark);
   padding: 10px 16px;
   border-radius: 18px;
 }
 
 .message-form {
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--freud-cream);
+  border: 1px solid var(--freud-tan);
   border-radius: 20px;
   padding: 12px 16px;
 }
@@ -62,16 +66,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 10px 15px;
   border-bottom: 1px solid rgba(88, 49, 1, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.chat-page li:hover {
+  background-color: var(--freud-apricot);
+  border-radius: 8px;
+}
+
+.chat-page li > a:first-child {
+  color: var(--freud-dark);
+  text-decoration: none;
+}
+
+.chat-page li > a:first-child:hover {
+  color: var(--freud-copper);
 }
 
 .delete-chat {
-  color: #b3261e;
+  color: var(--freud-copper);
   font-size: 0.85rem;
   text-decoration: none;
 }
 
 .delete-chat:hover {
+  color: var(--freud-dark);
   text-decoration: underline;
 }
