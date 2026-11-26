@@ -36,6 +36,7 @@
       <%= simple_form_for Chat.new do |f| %>
         <div class="modal-body freud-modal-body">
           <%= f.input :title, label: false, placeholder: "e.g. A rough week" %>
+          <%= f.association :therapist, include_blank: false, label: "Choose your therapist" %>
         </div>
 
         <div class="modal-footer">

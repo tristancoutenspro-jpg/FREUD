@@ -5,7 +5,7 @@
     <% @messages.each do |message| %>
       <div class="message message-<%= message.role %>">
         <p>
-          <strong><%= message.role == "user" ? "You" : "Freud" %>:</strong>
+          <strong><%= message.role == "user" ? "You" : @chat.therapist.name %>:</strong>
           <%= message.content %>
         </p>
       </div>
