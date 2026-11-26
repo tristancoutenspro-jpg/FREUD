@@ -54,3 +54,18 @@
           saturate(507%) hue-rotate(326deg)
           brightness(103%) contrast(102%);
 }
+
+.freud-modal-body label {
+  color: var(--freud-cream);
+}
+
+.freud-modal-body .form-select {
+  background-color: var(--freud-cream);
+  border-radius: 16px;
+}
+
+.freud-modal-body .form-select:focus {
+  background-color: var(--freud-cream);
+  box-shadow: none;
+  border-color: var(--freud-tan);
+}
