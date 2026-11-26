@@ -1,1 +1,56 @@
-// Specific CSS for your home-page
+.freud-modal-content {
+  background-color: var(--freud-dark);
+  border-radius: 20px;
+  border: 1px solid var(--freud-tan);
+  padding: 15px;
+}
+.freud-modal-header{
+  background-color: var(--freud-dark);
+}
+
+.freud-modal-title{
+  color: var(--freud-cream)
+}
+.freud-modal-body{
+  background-color: var(--freud-dark);
+}
+.freud-modal-footer{
+  background-color: var(--freud-cream);
+}
+.freud-bouton-modal{
+
+  background-color: var(--freud-cream);
+  color: var(--freud-dark);
+  border: 1px solid var(--freud-walnut);
+  border-radius: 30px;
+  padding: 12px 24px;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+.freud-bouton-modal:hover {
+  background-color: var(--freud-tan);
+  color: var(--freud-dark);
+}
+
+.form-control{
+  background-color: var(--freud-cream);
+  border-radius: 16px;
+}
+.form-control:focus{
+  background-color: var(--freud-cream);
+  box-shadow: none;
+  border-color: var(--freud-tan);
+
+}
+.btn-close{
+  color: var(--freud-cream);
+  --bs-btn-close-color: var(--freud-cream);
+}
+
+.btn-close {
+  opacity: 1;
+  filter: brightness(0) saturate(100%)
+          invert(91%) sepia(13%)
+          saturate(507%) hue-rotate(326deg)
+          brightness(103%) contrast(102%);
+}
