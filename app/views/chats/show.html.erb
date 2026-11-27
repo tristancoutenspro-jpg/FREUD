@@ -6,7 +6,7 @@
       <div class="message message-<%= message.role %>">
         <p>
           <strong><%= message.role == "user" ? "You" : "Freud" %>:</strong>
-          <%= message.content %>
+          <%= raw(render_markdown(message.content)) %>
         </p>
       </div>
     <% end %>
