@@ -21,7 +21,8 @@
     data-bs-toggle="modal" data-bs-target="#newChatModal">
     Start a new conversation →
   </button>
-
+  <br>
+    <a href="#therapists" class="btn-freud therapists-link">Meet our therapists ↓</a>
 </main>
 
 </div>
@@ -45,3 +46,46 @@
     </div>
   </div>
 </div>
+
+
+
+  <div class="therapists-section" id="therapists">
+  <h3 class="therapists-title">Meet our therapists</h3>
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="therapist-card">
+        <%= image_tag "marcus-aurelius.jpg", class: "therapist-photo"%>
+        <h4 class="therapist-name">Marcus Aurelius</h4>
+        <p class="therapist-bio">Inspired by Stoic philosophy, Marcus helps you step back from difficult situations, focus on what you can control and develop a stronger mindset. His approach encourages patience, self-discipline and a more balanced perspective on life's challenges.</p>
+
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="therapist-card">
+        <%= image_tag "sigmund-freud.jpg", class: "therapist-photo"%>
+        <h4 class="therapist-name">Sigmund Freud</h4>
+          <p class="therapist-bio">Freud encourages you to look beyond your immediate thoughts and explore the deeper reasons behind your feelings and behaviours. Through introspection and self-analysis, he helps you better understand your inner conflicts, desires and motivations.</p>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="therapist-card">
+        <%= image_tag "dalai-lama.jpg", class: "therapist-photo"%>
+        <h4 class="therapist-name">Dalai Lama</h4>
+          <p class="therapist-bio">With an emphasis on compassion, mindfulness and emotional awareness, the Dalai Lama helps you approach life's difficulties with greater calm and understanding. His perspective encourages kindness towards yourself and others, while finding peace in challenging moments.</p>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="therapist-card">
+        <%= image_tag "emily-dickinson.jpg", class: "therapist-photo"%>
+        <h4 class="therapist-name">Emily Dickinson</h4>
+        <p class="therapist-bio">Through a thoughtful and sensitive perspective, Emily helps you explore emotions that may be difficult to express. Her approach invites you to slow down, put your feelings into words and discover meaning through introspection, imagination and self-reflection.</p>      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+<br>
