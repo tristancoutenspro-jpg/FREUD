@@ -1,0 +1,11 @@
+<%# The AI could not answer: say so in the therapist's box and hand the typed text back. %>
+<%= turbo_stream.replace "dialogue",
+                         partial: "chats/dialogue",
+                         locals: { chat: @chat,
+                                   text: "Forgive me, I lost my train of thought for a moment. Could you say that again?",
+                                   animate: true,
+                                   error: true } %>
+
+<%= turbo_stream.replace "composer",
+                         partial: "messages/composer",
+                         locals: { chat: @chat, message: @message, refocus: true } %>

@@ -1,0 +1,10 @@
+<%# Tappable quick replies. Different ones before and after the first message. %>
+<% starters = ["I feel anxious", "I had a rough day", "I can't sleep", "I just need to talk"] %>
+<% follow_ups = ["Tell me more", "I'm not sure", "That helps, thank you", "Can we change the subject?"] %>
+<% replies = chat.messages.exists?(role: "user") ? follow_ups : starters %>
+<div class="chips" role="group" aria-label="Quick replies">
+  <% replies.each do |text| %>
+    <%= button_tag text, type: "button", class: "chip",
+                   data: { action: "composer#pick", composer_text_param: text } %>
+  <% end %>
+</div>

@@ -1,0 +1,4 @@
+<div class="log-entry log-<%= message.role %>">
+  <span class="log-author"><%= message.role == "user" ? "You" : therapist.name %></span>
+  <%= simple_format(message.content) %>
+</div>

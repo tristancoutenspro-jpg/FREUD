@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#583101">
+    <title>Freud | Offline</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: #1c100b;
+        color: #ffedd8;
+        font-family: "Courier New", monospace;
+        text-align: center;
+      }
+      .box {
+        max-width: 420px;
+        padding: 28px 24px;
+        border: 4px solid #e7bc91;
+        box-shadow: 0 0 0 4px #000;
+        background: #2a1a0e;
+      }
+      img { width: 96px; height: 96px; image-rendering: pixelated; }
+      h1 { margin: 16px 0 8px; font-size: 18px; letter-spacing: 1px; }
+      p { margin: 0 0 20px; line-height: 1.5; }
+      button {
+        padding: 12px 20px;
+        border: none;
+        background: #e7bc91;
+        color: #1c100b;
+        font: bold 14px "Courier New", monospace;
+        cursor: pointer;
+        box-shadow: 0 0 0 3px #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img src="/icon-192.png" alt="A lit candle">
+      <h1>THE ROOM IS QUIET</h1>
+      <p>You seem to be offline. The candle will wait for you. Come back when your connection returns.</p>
+      <button onclick="location.reload()">TRY AGAIN</button>
+    </div>
+  </body>
+</html>
