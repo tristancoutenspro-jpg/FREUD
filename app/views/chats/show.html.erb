@@ -1,27 +1,42 @@
-<div class="chat-page">
-  <h1><%= @chat.title %></h1>
+<% therapist = @chat.therapist %>
+<div class="room-page"
+     data-controller="room"
+     data-action="typewriter:start->room#talk typewriter:done->room#hush composer:thinking->room#think composer:done->room#unthink">
+  <h1 class="room-title"><%= @chat.title %></h1>
 
-  <div class="messages">
-    <% @messages.each do |message| %>
-      <div class="message message-<%= message.role %>">
-        <p>
-          <strong><%= message.role == "user" ? "You" : @chat.therapist.name %>:</strong>
-          <%= message.content %>
-        </p>
+  <div class="scene">
+    <div class="room" data-room-target="room" data-time="night">
+      <div class="room-stage">
+        <%# the sky behind the window: the room controller shows the one matching the real time of day %>
+        <% Therapist::SKY_TIMES.each do |time| %>
+          <%= image_tag therapist.sky_path(time), class: "room-layer room-sky room-sky-#{time}", alt: "" %>
+        <% end %>
+        <%= image_tag therapist.room_path, class: "room-layer room-bg", alt: "" %>
+        <div class="room-layer room-therapist" role="img" aria-label="<%= therapist.name %>"
+             style="background-image: url('<%= asset_path(therapist.sheet_path) %>')"></div>
+        <%= image_tag therapist.table_path, class: "room-layer room-table", alt: "" %>
+        <div class="room-glow room-glow-left"></div>
+        <div class="room-glow room-glow-right"></div>
+        <div class="room-glow room-glow-table"></div>
+        <div class="room-shade"></div>
       </div>
-    <% end %>
+    </div>
+
+    <% last_reply = @messages.where(role: "assistant").last %>
+    <%= render "chats/dialogue",
+               chat: @chat,
+               text: last_reply ? last_reply.content : therapist.opening_line,
+               animate: @messages.size <= 1 %>
   </div>
 
-  <div class="message-form">
-    <%= simple_form_for [@chat, Message.new] do |f| %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Write your message..." %>
+  <%= render "shared/care_note" %>
 
-      <%= f.submit "Send" %>
-    <% end %>
-  </div>
+  <%= render "messages/composer", chat: @chat, message: Message.new, refocus: false %>
 
- <%= link_to "Back to Home", root_path, class: "btn-freud" %>
-
+  <details class="room-log">
+    <summary>Conversation log</summary>
+    <div id="log-entries">
+      <%= render partial: "messages/log_entry", collection: @messages, as: :message, locals: { therapist: therapist } %>
+    </div>
+  </details>
 </div>

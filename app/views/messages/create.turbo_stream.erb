@@ -1,0 +1,12 @@
+<%= turbo_stream.append "log-entries" do %>
+  <%= render "messages/log_entry", message: @message, therapist: @chat.therapist %>
+  <%= render "messages/log_entry", message: @reply, therapist: @chat.therapist %>
+<% end %>
+
+<%= turbo_stream.replace "dialogue",
+                         partial: "chats/dialogue",
+                         locals: { chat: @chat, text: @reply.content, animate: true } %>
+
+<%= turbo_stream.replace "composer",
+                         partial: "messages/composer",
+                         locals: { chat: @chat, message: Message.new, refocus: true } %>
