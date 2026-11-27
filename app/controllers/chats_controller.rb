@@ -1,7 +1,7 @@
 class ChatsController < ApplicationController
   def index
     @chats = current_user.chats.order(created_at: :desc)
-    @chats = Chat.all
+
     return unless params[:query].present?
 
     @chats = @chats.where("title ILIKE ?", "%#{params[:query]}%")
@@ -12,6 +12,8 @@ class ChatsController < ApplicationController
     @chat.title = "New chat" if @chat.title.blank?
     @chat.user = current_user
     if @chat.save
+      # the therapist opens the session in their own voice
+      @chat.messages.create!(role: "assistant", content: @chat.therapist.opening_line)
       redirect_to chat_path(@chat)
     else
       redirect_to root_path, alert: "Could not start a chat"
@@ -32,6 +34,6 @@ class ChatsController < ApplicationController
   private
 
   def chat_params
-    params.require(:chat).permit(:title)
+    params.require(:chat).permit(:title, :therapist_id)
   end
 end

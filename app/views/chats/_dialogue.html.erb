@@ -1,0 +1,14 @@
+<%# The therapist's speech box. locals: chat, text, animate (type it out?), error (optional) %>
+<% error = local_assigns.fetch(:error, false) %>
+<div id="dialogue" class="dialogue<%= " is-error" if error %>"
+     data-controller="typewriter"
+     data-action="click->typewriter#skip"
+     data-typewriter-animate-value="<%= animate %>">
+  <span class="dialogue-name"><%= chat.therapist.name %></span>
+  <div class="dialogue-thinking" aria-hidden="true">
+    Listening<span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+  <div class="dialogue-text" data-typewriter-target="text" aria-live="polite">
+    <%= simple_format(text) %>
+  </div>
+</div>

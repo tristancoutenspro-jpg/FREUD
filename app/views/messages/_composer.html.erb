@@ -1,0 +1,20 @@
+<%# Quick replies + the message bar. locals: chat, message, refocus %>
+<div id="composer" class="composer"
+     data-controller="composer"
+     data-composer-refocus-value="<%= refocus %>"
+     data-action="turbo:submit-start->composer#start turbo:submit-end->composer#end">
+  <%= render "messages/chips", chat: chat %>
+
+  <%= form_with model: [chat, message], class: "reply-bar",
+                data: { composer_target: "form", action: "submit->composer#guard" } do |f| %>
+    <span class="reply-bar-label">YOU</span>
+    <%= f.text_field :content,
+                     placeholder: "Say something...",
+                     autocomplete: "off",
+                     required: true,
+                     maxlength: 2000,
+                     class: "reply-input",
+                     data: { composer_target: "input" } %>
+    <%= f.submit "SEND", class: "pixel-button" %>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_24_154506) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_27_090000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_154506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.bigint "therapist_id"
+    t.index ["therapist_id"], name: "index_chats_on_therapist_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
@@ -201,6 +203,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_154506) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
+  create_table "therapists", force: :cascade do |t|
+    t.string "name"
+    t.text "prompt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "greeting"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -215,6 +225,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_154506) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chats", "therapists"
   add_foreign_key "chats", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "solid_queue_batch_executions", "solid_queue_batches", column: "batch_id", on_delete: :cascade

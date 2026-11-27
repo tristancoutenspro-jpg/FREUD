@@ -10,3 +10,11 @@
 .navbar-lewagon .navbar-brand img {
   width: 30px;
 }
+
+.navbar-lewagon .navbar-toggler {
+  border-color: rgba(255, 237, 216, 0.5);
+}
+
+.navbar-lewagon .navbar-toggler-icon {
+  filter: invert(1);
+}

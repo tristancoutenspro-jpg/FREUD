@@ -1,6 +1,5 @@
 class Chat < ApplicationRecord
   has_many :messages, dependent: :destroy
   belongs_to :user
-
-  # missed thing in scope
+  belongs_to :therapist
 end
