@@ -136,3 +136,10 @@ html {
 .therapists-section {
   scroll-margin-top: 80px;
 }
+
+hr {
+  width: 100%;
+  border: none;
+  height: 3px;
+  background-color: var(--freud-dark);
+}
