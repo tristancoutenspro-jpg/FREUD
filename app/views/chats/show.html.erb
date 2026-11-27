@@ -25,7 +25,7 @@
     <% last_reply = @messages.where(role: "assistant").last %>
     <%= render "chats/dialogue",
                chat: @chat,
-               text: last_reply ? last_reply.content : therapist.opening_line,
+               text: last_reply ? raw(render_markdown(last_reply.content)) : therapist.opening_line,
                animate: @messages.size <= 1 %>
   </div>
 
